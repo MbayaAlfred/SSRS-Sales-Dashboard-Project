@@ -28,12 +28,27 @@ The **SSRS Sales Dashboard** provides insights into the following key metrics:
 
 ## SQL Queries
 
-The following SQL queries were used to populate the dataset for these reports:
+The following SQL query is used to populate the dataset for the reports:
 
 ```sql
 -- Example SQL query used for the Sales by Year report
-SELECT 
-    YEAR(OrderDate) AS Year,
-    SUM(TotalAmount) AS Sales
-FROM SalesOrders
-GROUP BY YEAR(OrderDate);
+SELECT YEAR(A.OrderDate) AS Year,
+ MONTH(A.OrderDate) AS Month,
+ ISNULL(E.FirstName + ' ' + E.LastName, 'No rep') AS SalesRep,
+ ISNULL(E.JobTitle, 'None') AS JobTitle, 
+ B.[Group] AS TGroup,
+ B.Name AS TName,
+ D.Name AS ShipState, 
+ A.TotalDue
+FROM     Sales.SalesOrderHeader AS A LEFT OUTER JOIN
+                  Sales.SalesTerritory AS B ON A.TerritoryID = B.TerritoryID LEFT OUTER JOIN
+                  Person.Address AS C ON C.AddressID = A.ShipToAddressID LEFT OUTER JOIN
+                  Person.StateProvince AS D ON C.StateProvinceID = D.StateProvinceID LEFT OUTER JOIN
+                  Sales.vSalesPerson AS E ON A.SalesPersonID = E.BusinessEntityID
+
+WHERE		YEAR(A.OrderDate)  IN  (@Year)
+AND		B.[Group]		IN (@TGroup)
+AND		B.Name 		IN(@TName)
+AND		ISNULL(E.FirstName + ' ' + E.LastName, 'No rep')	IN (@SalesRep)
+AND		ISNULL(E.JobTitle, 'None')  IN (@JobTitle)
+AND		D.Name 	IN (@ShipState)
