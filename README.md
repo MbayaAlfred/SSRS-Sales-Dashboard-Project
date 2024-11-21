@@ -52,3 +52,7 @@ AND		B.Name 		IN(@TName)
 AND		ISNULL(E.FirstName + ' ' + E.LastName, 'No rep')	IN (@SalesRep)
 AND		ISNULL(E.JobTitle, 'None')  IN (@JobTitle)
 AND		D.Name 	IN (@ShipState)
+
+
+
+![Visitor Count](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/YourUsername/YourRepoName&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visitors&edge_flat=false)
