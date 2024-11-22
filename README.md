@@ -26,6 +26,10 @@ The **SSRS Sales Dashboard** provides insights into the following key metrics:
 2. **Modify Connection Strings**: Ensure that the reports' connection strings are properly set to point to the correct data source.
 3. **Deploy Reports**: Deploy the reports to your SSRS server or run them locally using SQL Server Data Tools (SSDT).
 
+## Vistor Count
+
+![Visitor Count](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/YourUsername/YourRepoName&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visitors&edge_flat=false)
+
 ## SQL Queries
 
 The following SQL query is used to populate the dataset for the reports:
@@ -55,9 +59,6 @@ AND		D.Name 	IN (@ShipState)
 
 
 
-## Vistor Count
-
-![Visitor Count](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/YourUsername/YourRepoName&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visitors&edge_flat=false)
 
 
 
